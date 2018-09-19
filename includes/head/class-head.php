@@ -1,9 +1,9 @@
 <?php
 /**
- * Controlled_Chaos_Theme head template.
+ * AMCD_Theme head template.
  *
  * @package WordPress
- * @subpackage Controlled_Chaos_Theme
+ * @subpackage AMCD_Theme
  * @since  1.0.0
  */
 
@@ -13,7 +13,7 @@ namespace AMCD_Theme;
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Controlled_Chaos_Theme head template.
+ * AMCD_Theme head template.
  */
 class Head {
 

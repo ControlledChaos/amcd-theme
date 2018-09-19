@@ -3,7 +3,7 @@
  * Blog HTML output.
  *
  * @package WordPress
- * @subpackage Controlled_Chaos_Theme
+ * @subpackage AMCD_Theme
  * @since  1.0.0
  */
 

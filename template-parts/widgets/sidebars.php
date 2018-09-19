@@ -3,7 +3,7 @@
  * Sidebar HTML and widget output.
  *
  * @package WordPress
- * @subpackage Controlled_Chaos_Theme
+ * @subpackage AMCD_Theme
  * @since  1.0.0
  */
 
@@ -32,11 +32,11 @@ class Sidebar_Widgets {
 
     /**
 	 * Primary sidebar.
-     * 
+     *
      * @since  1.0.0
 	 */
     public function primary() {
-        
+
         /**
          * Get sidebar output if widgets are active and if
          * the No Sidebars template is not used.
@@ -55,11 +55,11 @@ class Sidebar_Widgets {
 
     /**
 	 * Secondary sidebar.
-     * 
+     *
      * @since  1.0.0
 	 */
     public function secondary() {
-        
+
         /**
          * Get sidebar output if widgets are active and if
          * the Two Sidebars template is used.

@@ -3,7 +3,7 @@
  * Image meta tag.
  *
  * @package WordPress
- * @subpackage Controlled_Chaos_Theme
+ * @subpackage AMCD_Theme
  * @since  1.0.0
  */
 
@@ -12,7 +12,7 @@ namespace AMCD_Theme;
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class Controlled_Chaos_Theme_Meta_Image {
+class AMCD_Theme_Meta_Image {
 
 	/**
 	 * Constructor magic method.
@@ -48,5 +48,5 @@ class Controlled_Chaos_Theme_Meta_Image {
 
 }
 
-// Run the Controlled_Chaos_Theme_Meta_Image class.
-$controlled_chaos_meta_image = new Controlled_Chaos_Theme_Meta_Image;
+// Run the AMCD_Theme_Meta_Image class.
+$controlled_chaos_meta_image = new AMCD_Theme_Meta_Image;

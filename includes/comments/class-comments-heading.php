@@ -3,7 +3,7 @@
  * Post comments form heading.
  *
  * @package WordPress
- * @subpackage Controlled_Chaos_Theme
+ * @subpackage AMCD_Theme
  * @since  1.0.0
  */
 
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Post comments form heading.
  */
-class Controlled_Chaos_Theme_Comments_Heading {
+class AMCD_Theme_Comments_Heading {
 
     /**
 	 * Constructor magic method.
@@ -58,4 +58,4 @@ class Controlled_Chaos_Theme_Comments_Heading {
 
 }
 
-$controlled_chaos_comments_heading = new Controlled_Chaos_Theme_Comments_Heading;
+$controlled_chaos_comments_heading = new AMCD_Theme_Comments_Heading;

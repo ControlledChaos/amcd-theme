@@ -3,7 +3,7 @@
  * Post comments form status.
  *
  * @package WordPress
- * @subpackage Controlled_Chaos_Theme
+ * @subpackage AMCD_Theme
  * @since  1.0.0
  */
 
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Post comments form status.
  */
-class Controlled_Chaos_Theme_Comments_Status {
+class AMCD_Theme_Comments_Status {
 
     /**
 	 * Constructor magic method.
@@ -58,4 +58,4 @@ class Controlled_Chaos_Theme_Comments_Status {
 
 }
 
-$controlled_chaos_comments_status = new Controlled_Chaos_Theme_Comments_Status;
+$controlled_chaos_comments_status = new AMCD_Theme_Comments_Status;

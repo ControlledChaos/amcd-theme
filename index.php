@@ -3,7 +3,7 @@
  * Content index class.
  *
  * @package WordPress
- * @subpackage Controlled_Chaos_Theme
+ * @subpackage AMCD_Theme
  * @since Controlled Chaos 1.0.0
  */
 namespace AMCD_Theme;
@@ -23,13 +23,6 @@ class Index {
 
 		// Extensibility hook.
 		do_action( 'amcd_before_post' );
-
-		/**
-		 * Run class for sidebars and widget areas.
-		 * 
-		 * Needs to run before the loop.
-		 */
-		get_sidebar();
 
 		// Content templates.
 		require get_theme_file_path( '/template-parts/content/content.php' );

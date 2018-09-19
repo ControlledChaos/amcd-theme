@@ -3,7 +3,7 @@
  * Author meta tag.
  *
  * @package WordPress
- * @subpackage Controlled_Chaos_Theme
+ * @subpackage AMCD_Theme
  * @since  1.0.0
  */
 
@@ -12,7 +12,7 @@ namespace AMCD_Theme;
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class Controlled_Chaos_Theme_Meta_Author {
+class AMCD_Theme_Meta_Author {
 
 	/**
 	 * Constructor magic method.
@@ -38,5 +38,5 @@ class Controlled_Chaos_Theme_Meta_Author {
 
 }
 
-// Run the Controlled_Chaos_Theme_Meta_Author class.
-$controlled_chaos_meta_author = new Controlled_Chaos_Theme_Meta_Author;
+// Run the AMCD_Theme_Meta_Author class.
+$controlled_chaos_meta_author = new AMCD_Theme_Meta_Author;

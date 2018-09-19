@@ -3,7 +3,7 @@
  * Footer HTML template.
  *
  * @package WordPress
- * @subpackage Controlled_Chaos_Theme
+ * @subpackage AMCD_Theme
  * @since  1.0.0
  */
 
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 /**
  * Footer HTML template.
  */
-class Controlled_Chaos_Theme_Footer {
+class AMCD_Theme_Footer {
 
     /**
 	 * Constructor magic method.
@@ -48,4 +48,4 @@ class Controlled_Chaos_Theme_Footer {
 
 }
 
-$amcd_footer = new Controlled_Chaos_Theme_Footer;
+$amcd_footer = new AMCD_Theme_Footer;

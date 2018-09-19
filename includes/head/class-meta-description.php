@@ -3,7 +3,7 @@
  * Description meta tag.
  *
  * @package WordPress
- * @subpackage Controlled_Chaos_Theme
+ * @subpackage AMCD_Theme
  * @since  1.0.0
  */
 
@@ -12,7 +12,7 @@ namespace AMCD_Theme;
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class Controlled_Chaos_Theme_Meta_Description {
+class AMCD_Theme_Meta_Description {
 
 	/**
 	 * Constructor magic method.
@@ -42,5 +42,5 @@ class Controlled_Chaos_Theme_Meta_Description {
 
 }
 
-// Run the Controlled_Chaos_Theme_Meta_Description class.
-$controlled_chaos_meta_description = new Controlled_Chaos_Theme_Meta_Description;
+// Run the AMCD_Theme_Meta_Description class.
+$controlled_chaos_meta_description = new AMCD_Theme_Meta_Description;

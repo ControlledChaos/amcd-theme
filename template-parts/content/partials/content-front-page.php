@@ -3,7 +3,7 @@
  * Front page HTML output.
  *
  * @package WordPress
- * @subpackage Controlled_Chaos_Theme
+ * @subpackage AMCD_Theme
  * @since  1.0.0
  */
 
@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; ?>
         <?php do_action( 'amcd_before_article' ); ?>
         <article class="hentry" id="post-<?php the_ID(); ?>" role="article">
             <header class="entry-header">
-                <?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
+                <?php // the_title( '<h2 class="entry-title">', '</h2>' ); ?>
             </header>
             <div class="entry-content" itemprop="articleBody">
                 <?php if ( '' !== get_the_post_thumbnail() ) : ?>

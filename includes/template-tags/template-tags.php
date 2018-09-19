@@ -5,7 +5,7 @@
  * Convert static class methods to more traditional tags.
  *
  * @package WordPress
- * @subpackage Controlled_Chaos_Theme
+ * @subpackage AMCD_Theme
  * @since Controlled Chaos 1.0.0
  */
 namespace AMCD_Theme;

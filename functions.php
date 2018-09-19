@@ -3,7 +3,7 @@
  * Controlled Chaos Theme functions.
  *
  * @package    WordPress
- * @subpackage Controlled_Chaos_Theme
+ * @subpackage AMCD_Theme
  * @author     Greg Sweet <greg@ccdzine.com>
  * @copyright  Copyright (c) 2017 - 2018, Greg Sweet
  * @link       https://github.com/ControlledChaos/amcd-theme-theme
@@ -11,7 +11,7 @@
  * @since      Controlled Chaos 1.0.0
  */
 
-namespace AMCD_Theme\Functions;
+namespace AMCD_Theme;
 
 // Restrict direct access.
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -468,29 +468,11 @@ final class Functions {
 		// Theme sylesheet.
 		wp_enqueue_style( 'amcd-style',      get_stylesheet_uri(), [], '', 'screen' );
 
-		// Internet Explorer styles.
-		wp_enqueue_style( 'amcd-ie8',        get_theme_file_uri( '/assets/css/ie8.css' ), [], '', 'screen' );
-		wp_style_add_data( 'amcd-ie8', 'conditional', 'lt IE 9' );
-
-		/**
-		 * Check if we and/or Google are online. If so, get Google fonts
-		 * from their servers. Otherwise, get them from the theme directory.
-		 */
 		$google = checkdnsrr( 'google.com' );
 
 		if ( $google ) {
 			wp_enqueue_style( 'amcd-fonts', 'https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Source+Code+Pro:200,300,400,500,600,700,900', [], '', 'screen' );
-		} else {
-			wp_enqueue_style( 'amcd-sans',  get_theme_file_uri( '/assets/fonts/open-sans/open-sans.min.css' ), [], '', 'screen' );
-			wp_enqueue_style( 'amcd-serif', get_theme_file_uri( '/assets/fonts/merriweather/merriweather.min.css' ), [], '', 'screen' );
-			wp_enqueue_style( 'amcd-code',  get_theme_file_uri( '/assets/fonts/source-code-pro/source-code-pro.min.css' ), [], '', 'screen' );
 		}
-
-		// Media and supports queries.
-		wp_enqueue_style( 'amcd-queries',   get_theme_file_uri( '/queries.css' ), [], '', 'screen' );
-
-		// Print styles.
-		wp_enqueue_style( 'amcd-print',     get_theme_file_uri( '/assets/css/print.css' ), [], '', 'print' );
 
 	}
 
@@ -512,7 +494,7 @@ final class Functions {
 	 */
 	public function login_styles() {
 
-		wp_enqueue_style( 'custom-login', get_theme_file_uri( '/assets/css/login.css' ), [], '', 'screen' );
+		wp_enqueue_style( 'amcd-theme-login', get_theme_file_uri( '/assets/css/login.css' ), [], '', 'screen' );
 
 	}
 
@@ -525,9 +507,6 @@ final class Functions {
 	 */
 	private function dependencies() {
 
-		// Theme customizer.
-		require_once get_theme_file_path( '/includes/customizer/class-customizer.php' );
-
 		// Set up the <head> element.
 		require_once get_theme_file_path( '/includes/head/class-head.php' );
 
@@ -539,9 +518,6 @@ final class Functions {
 
 		// Get template filters.
 		include get_theme_file_path( '/includes/filters/class-template-filters.php' );
-
-		// Register sidebars.
-		require get_theme_file_path( '/includes/widgets/register-sidebars.php' );
 
 		// Blog navigation.
 		if ( ! is_singular() ) {
@@ -562,13 +538,13 @@ final class Functions {
  * @access public
  * @return object
  */
-function cc_theme() {
+function amcd_theme() {
 
-	$cc_theme = Functions::get_instance();
+	$amcd_theme = Functions::get_instance();
 
-	return $cc_theme;
+	return $amcd_theme;
 
 }
 
 // Run the Functions class.
-cc_theme();
+amcd_theme();

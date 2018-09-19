@@ -1,5 +1,5 @@
 /*
-Theme Name: Alana Morshead
+Theme Name: Alana Morshead Framework
 Theme URI: https://github.com/ControlledChaos/amcd-theme
 Author: Controlled Chaos Design
 Author URI: http://ccdzine.com/
@@ -129,6 +129,10 @@ ol {
 .main-navigation li {
 	display: inline-block;
 	margin-right: 1em;
+}
+
+.main-nav-toggle {
+	display: none;
 }
 
 .posts-nav {
@@ -610,4 +614,71 @@ ol.comment-list li.thread-odd {}
 .chromeframe {
 	position: absolute;
 	top: 0;
+}
+
+/**
+ * Following is a comprehensive list of query possibilities.
+ * It is not intended to be left intact. Use what works for
+ * your build and delete the rest.
+ *
+ * @link https://css-tricks.com/snippets/css/media-queries-for-standard-devices/
+ */
+
+/*--------------------------------------------------------------
+# SUPPORTS QUERIES
+--------------------------------------------------------------*/
+
+/* When CSS Flexbox is not supported */
+@supports not ( (display: flex) or (display: flexbox) ) {
+	/* Styles */
+}
+
+/* When CSS Grid is not supported */
+@supports not ( (display: grid) ) {
+	/* Styles */
+}
+
+/*--------------------------------------------------------------
+# WORDPRESS QUERIES
+--------------------------------------------------------------*/
+@media screen and (max-width: 782px) {
+	/* Styles */
+}
+
+@media screen and (max-width: 600px) {
+	/* Styles */
+}
+
+/*--------------------------------------------------------------
+# WIDTH QUERIES
+--------------------------------------------------------------*/
+
+/* Equal or less than Controlled Chaos default width */
+@media screen and (max-width: 1280px) {
+	/* Styles */
+}
+
+/* Greater than Controlled Chaos default width */
+@media screen and (min-width: 1281px) {
+	/* Styles */
+}
+
+@media screen and (max-width: 480px) {
+	/* Styles */
+}
+
+@media screen and (max-width: 640px) {
+	/* Styles */
+}
+
+@media screen and (max-width: 768px) {
+
+	.main-navigation ul {
+		display: none;
+	}
+
+	.main-nav-toggle {
+		display: inline-block;
+	}
+
 }
