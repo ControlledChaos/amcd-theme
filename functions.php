@@ -80,9 +80,6 @@ final class Functions {
 		// Controlled Chaos theme setup.
 		add_action( 'after_setup_theme', [ $this, 'setup' ] );
 
-		// Disable custom colors in the editor.
-		add_action( 'after_setup_theme', [ $this, 'editor_custom_color' ] );
-
 		// Remove unpopular meta tags.
 		add_action( 'init', [ $this, 'head_cleanup' ] );
 
@@ -177,106 +174,11 @@ final class Functions {
 			'caption'
 		 ] );
 
-		// Register post formats.
-		add_theme_support( 'post-formats', [
-			'aside',
-			'gscreenery',
-			'video',
-			'image',
-			'audio',
-			'link',
-			'quote',
-			'status',
-			'chat'
-		 ] );
-
-		/**
-		 * Add editor support.
-		 *
-		 * @since 1.0.0
-		 */
-
-		/**
-		 * Color arguments.
-		 *
-		 * Some WordPress admin colors used here for demonstration.
-		 */
-		$color_args = [
-			[
-				'name'  => __( 'WordPress Dark Gray', 'amcd-theme' ),
-				'slug'  => 'amcd-wp-dark-gray',
-				'color' => '#23282d',
-			],
-			[
-				'name'  => __( 'WordPress Gray', 'amcd-theme' ),
-				'slug'  => 'amcd-wp-gray',
-				'color' => '#32373c',
-			],
-			[
-				'name'  => __( 'WordPress Pale Gray', 'amcd-theme' ),
-				'slug'  => 'amcd-wp-pale-gray',
-				'color' => '#edeff0',
-			],
-			[
-				'name'  => __( 'White', 'amcd-theme' ),
-				'slug'  => 'amcd-white',
-				'color' => '#fff',
-			],
-			[
-				'name'  => __( 'WordPress Medium Blue', 'amcd-theme' ),
-				'slug'  => 'amcd-wp-medium-blue',
-				'color' => '#0085ba',
-			],
-			[
-				'name'  => __( 'WordPress Light Blue', 'amcd-theme' ),
-				'slug'  => 'amcd-wp-light-blue',
-				'color' => '#00a0d2',
-			],
-			[
-				'name'  => __( 'WordPress Success Green', 'amcd-theme' ),
-				'slug'  => 'amcd-wp-success-green',
-				'color' => '#46b450',
-			],
-			[
-				'name'  => __( 'WordPress Error Red', 'amcd-theme' ),
-				'slug'  => 'amcd-wp-error-red',
-				'color' => '#dc3232',
-			],
-			[
-				'name'  => __( 'WordPress Warning Yellow', 'amcd-theme' ),
-				'slug'  => 'amcd-wp-warning-yellow',
-				'color' => '#ffb900',
-			]
-		];
-
-		// Apply a filter to editor arguments.
-		$colors = apply_filters( 'amcd_editor_colors', $color_args );
-
-		// Add color support.
-		add_theme_support( 'editor-color-palette', $colors );
-
-		add_theme_support( 'align-wide' );
-
 		/**
 		 * Add theme support.
 		 *
 		 * @since 1.0.0
 		 */
-
-		// Customizer widget refresh support.
-		add_theme_support( 'customize-selective-refresh-widgets' );
-
-		// WooCommerce support.
-		add_theme_support( 'woocommerce' );
-		add_theme_support( 'wc-product-gallery-zoom' );
-		// TODO: add Fancybox to WC products.
-		// add_theme_support( 'wc-product-gallery-lightbox' );
-		add_theme_support( 'wc-product-gallery-slider' );
-
-		// Beaver Builder support.
-		add_theme_support( 'fl-theme-builder-headers' );
-		add_theme_support( 'fl-theme-builder-footers' );
-		add_theme_support( 'fl-theme-builder-parts' );
 
 		// Featured image support.
 		add_theme_support( 'post-thumbnails' );
@@ -290,68 +192,27 @@ final class Functions {
 		 * @since 1.0.0
 		 */
 
+		// Set default sizes in options tabe.
+		update_option( 'thumbnail_size_w', 160 );
+		update_option( 'thumbnail_size_h', 160 );
+		update_option( 'medium_size_w', 320 );
+		update_option( 'medium_size_h', 240 );
+		update_option( 'large_size_w', 1024 );
+		update_option( 'large_size_h', 768 );
+
+		// 1:1 Square thumbnails.
+		add_image_size( __( 'thumb-large', 'amcd-theme' ), 240, 240, true );
+		add_image_size( __( 'thumb-xlarge', 'amcd-theme' ), 320, 320, true );
+
 		// 16:9 HD Video.
 		add_image_size( __( 'video', 'amcd-theme' ), 1280, 720, true );
 		add_image_size( __( 'video-md', 'amcd-theme' ), 960, 540, true );
 		add_image_size( __( 'video-sm', 'amcd-theme' ), 640, 360, true );
 
-		// 21:9 Cinemascope.
-		add_image_size( __( 'banner', 'amcd-theme' ), 1280, 549, true );
-		add_image_size( __( 'banner-md', 'amcd-theme' ), 960, 411, true );
-		add_image_size( __( 'banner-sm', 'amcd-theme' ), 640, 274, true );
-
 		// Add image size for meta tags if companion plugin is not activated.
-		if ( ! is_plugin_active( 'amcd-theme-plugin/amcd-theme-plugin.php' ) ) {
+		if ( ! is_plugin_active( 'amcd-plugin/amcd-plugin.php' ) ) {
 			add_image_size( __( 'Meta Image', 'amcd-theme' ), 1200, 630, true );
 		}
-
-		/**
-		 * Add header image support.
-		 *
-		 * @since 1.0.0
-		 */
-
-		// Header arguments.
-		$header_args = [
-			'default-image'          => '',
-			'width'                  => 1280,
-			'height'                 => 549,
-			'flex-height'            => true,
-			'flex-width'             => true,
-			'uploads'                => true,
-			'random-default'         => false,
-			'header-text'            => true,
-			'default-text-color'     => '',
-			'wp-head-callback'       => '',
-			'admin-head-callback'    => '',
-			'admin-preview-callback' => '',
-		];
-
-		// Apply a filter to header arguments.
-		$header = apply_filters( 'amcd_header_image', $header_args );
-
-		// Add header support.
-		add_theme_support( 'custom-header', $header );
-
-		/**
-		 * Add logo support.
-		 *
-		 * @since 1.0.0
-		 */
-
-		// Custom logo support.
-		$logo_args = [
-			'width'       => 180,
-			'height'      => 180,
-			'flex-width'  => true,
-			'flex-height' => true
-		];
-
-		// Apply a filter to logo arguments.
-		$logo = apply_filters( 'amcd_header_image', $logo_args );
-
-		// Add logo support.
-		add_theme_support( 'custom-logo', $logo );
 
 		 /**
 		 * Set content width.
@@ -389,24 +250,6 @@ final class Functions {
 		if ( class_exists( 'Jetpack' ) ) {
 			add_filter( 'jetpack_enable_opengraph', '__return_false', 99 );
 		}
-
-	}
-
-	/**
-	 * Theme support for disabling custom colors in the editor.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return bool Returns true for the color picker.
-	 */
-	public function editor_custom_color() {
-
-		$disable = add_theme_support( 'disable-custom-colors', [] );
-
-		// Apply a filter for conditionally disabling the picker.
-		$custom_colors = apply_filters( 'amcd_editor_custom_colors', '__return_false' );
-
-		return $custom_colors;
 
 	}
 
