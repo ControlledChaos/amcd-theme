@@ -78,7 +78,7 @@ class HTML {
 
     /**
      * Get the <body> tag output.
-     * 
+     *
      * Body conditional Schema attributes
      * found at inludes/template-tags/class-body-schema
      */
@@ -109,7 +109,7 @@ class HTML {
     /**
      * Hook that adds the site header with
      * branding and navigation hook.
-     * 
+     *
      * The header is called with a hook for
      * removal by theme builders.
      */

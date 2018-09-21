@@ -34,32 +34,15 @@ if ( ! empty( $description ) ) {
 $site_description = apply_filters( 'amcd_site_description', $description );
 
 /**
- * Site logo.
- */
-$logo_id  = get_theme_mod( 'custom_logo' );
-$get_logo = wp_get_attachment_image_src( $logo_id , 'full' );
-if ( function_exists( 'the_custom_logo' ) ) :
-    if ( is_front_page() ) {
-        $output = '<img src="' . esc_url( $get_logo[0] ) . '">';
-    } else {
-        $output = the_custom_logo();
-    }
-endif;
-$logo = apply_filters( 'amcd_logo', $output );
-
-/**
  * Output header content.
  */
 do_action( 'amcd_before_header_content' ); ?>
+<header class="site-header" role="banner" itemscope="itemscope" itemtype="http://schema.org/Organization">
     <div class="header-content global-wrapper header-wrapper">
-    <?php if ( has_custom_logo() ) : ?>
-        <div class="site-logo">
-            <?php echo $logo; ?>
-        </div>
-<?php endif; ?>
-    <div class="site-title-description">
+        <div class="site-title-description">
             <?php echo $site_title, "\r"; ?>
             <?php echo $site_description, "\r"; ?>
         </div>
     </div><!-- header-content -->
-<?php do_action( 'amcd_after_header_content' );
+</header>
+<?php do_action( 'amcd_after_header_content' ); ?>

@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; ?>
     <main class="main" role="main" itemscope itemprop="mainContentOfPage">
     <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
         <?php do_action( 'amcd_before_article' ); ?>
-        <article class="hentry" id="post-<?php the_ID(); ?>" role="article">
+        <article class="global-wrapper hentry" id="post-<?php the_ID(); ?>" role="article">
             <header class="entry-header">
                 <?php // the_title( '<h2 class="entry-title">', '</h2>' ); ?>
             </header>

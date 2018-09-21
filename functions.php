@@ -471,7 +471,7 @@ final class Functions {
 		$google = checkdnsrr( 'google.com' );
 
 		if ( $google ) {
-			wp_enqueue_style( 'amcd-fonts', 'https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i|Source+Code+Pro:200,300,400,500,600,700,900', [], '', 'screen' );
+			wp_enqueue_style( 'amcd-fonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,700i', [], '', 'screen' );
 		}
 
 	}

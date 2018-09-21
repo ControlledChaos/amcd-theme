@@ -21,14 +21,8 @@ class Index {
 		// Begin HTML and get <head> section.
 		get_header();
 
-		// Extensibility hook.
-		do_action( 'amcd_before_post' );
-
 		// Content templates.
 		require get_theme_file_path( '/template-parts/content/content.php' );
-
-		// Extensibility hook.
-		do_action( 'amcd_after_post' );
 
 		// Load scripts and close HTML.
 		get_footer();

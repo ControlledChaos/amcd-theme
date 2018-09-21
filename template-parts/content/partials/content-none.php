@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
     
 	<main class="main" role="main" itemscope itemprop="mainContentOfPage">
 		<?php do_action( 'amcd_before_article' ); ?>
-        <article class="hentry" id="post-<?php the_ID(); ?>" role="article">
+        <article class="global-wrapper hentry" id="post-<?php the_ID(); ?>" role="article">
             <header class="entry-header">
                 <?php echo sprintf( '<h1 class="entry-title">%1s</h1>', esc_html__( 'Nothing Found' ) ); ?>
             </header>

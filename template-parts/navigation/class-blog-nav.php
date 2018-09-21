@@ -31,11 +31,7 @@ class Blog_Nav {
 	 */
 	public function nav() {
 
-		if ( 'numeric' == amcd_sanitize_blog_navigation_format( get_theme_mod( 'amcd_blog_navigation_format' ) ) ) {
-			get_template_part( 'template-parts/navigation/partials/numeric-nav' );
-		} else {
-			get_template_part( 'template-parts/navigation/partials/posts-nav' );
-		}
+		get_template_part( 'template-parts/navigation/partials/posts-nav' );
 
 	}
 
