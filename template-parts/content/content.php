@@ -39,10 +39,18 @@ class Content {
             $partial = get_template_part( 'template-parts/content/partials/content', 'front-page' );
         } elseif ( is_home() ) {
             $partial = get_template_part( 'template-parts/content/partials/content', 'home' );
+        } elseif ( is_post_type_archive( 'amcd_features' ) ) {
+            $partial = get_template_part( 'template-parts/content/partials/content-archive', 'amcd_features' );
+        } elseif ( is_post_type_archive( 'amcd_commercials' ) ) {
+            $partial = get_template_part( 'template-parts/content/partials/content-archive', 'amcd_commercials' );
         } elseif ( is_archive() ) {
             $partial = get_template_part( 'template-parts/content/partials/content', 'archive' );
         } elseif ( is_search() ) {
             $partial = get_template_part( 'template-parts/content/partials/content', 'search' );
+        } elseif ( is_singular( 'amcd_features' ) ) {
+            $partial = get_template_part( 'template-parts/content/partials/content-single', 'amcd_features' );
+        } elseif ( is_singular( 'amcd_commercials' ) ) {
+            $partial = get_template_part( 'template-parts/content/partials/content-single', 'amcd_commercials' );
         } else {
             $partial = get_template_part( 'template-parts/content/partials/content', 'singular' );
         }

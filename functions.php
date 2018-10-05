@@ -200,18 +200,21 @@ final class Functions {
 		update_option( 'large_size_w', 1024 );
 		update_option( 'large_size_h', 768 );
 
-		// 1:1 Square thumbnails.
-		add_image_size( __( 'thumb-large', 'amcd-theme' ), 240, 240, true );
-		add_image_size( __( 'thumb-xlarge', 'amcd-theme' ), 320, 320, true );
+		// 1:1 Square.
+		add_image_size( 'thumb-large', 240, 240, true );
+		add_image_size( 'thumb-x-large', 320, 320, true );
+		add_image_size( 'intro-small', 640, 640, true );
+		add_image_size( 'intro-medium', 768, 768, true );
+		add_image_size( 'intro-large', 1080, 1080, true );
 
 		// 16:9 HD Video.
-		add_image_size( __( 'video', 'amcd-theme' ), 1280, 720, true );
-		add_image_size( __( 'video-md', 'amcd-theme' ), 960, 540, true );
-		add_image_size( __( 'video-sm', 'amcd-theme' ), 640, 360, true );
+		add_image_size( 'video-small', 640, 360, true );
+		add_image_size( 'video-medium', 960, 540, true );
+		add_image_size( 'video-large', 1280, 720, true );
 
 		// Add image size for meta tags if companion plugin is not activated.
 		if ( ! is_plugin_active( 'amcd-plugin/amcd-plugin.php' ) ) {
-			add_image_size( __( 'Meta Image', 'amcd-theme' ), 1200, 630, true );
+			add_image_size( __( 'meta-image', 'amcd-theme' ), 1200, 630, true );
 		}
 
 		 /**
