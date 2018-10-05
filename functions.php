@@ -42,12 +42,6 @@ final class Functions {
 
 			$instance = new self;
 
-			// Class hook functions.
-			$instance->hooks();
-
-			// Class filter functions.
-			$instance->filters();
-
 			// Theme dependencies.
 			$instance->dependencies();
 
@@ -63,16 +57,7 @@ final class Functions {
 	 * @access public
 	 * @return void
 	 */
-	public function __construct() {}
-
-	/**
-	 * Hooks and filters.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return void
-	 */
-	public function hooks() {
+	public function __construct() {
 
 		// Swap html 'no-js' class with 'js'.
 		add_action( 'wp_head', [ $this, 'js_detect' ], 0 );
@@ -102,22 +87,8 @@ final class Functions {
 		// Login styles.
 		add_action( 'login_enqueue_scripts', [ $this, 'login_styles' ] );
 
-	}
-
-	/**
-	 * Hooks and filters.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return void
-	 */
-	public function filters() {
-
 		// jQuery UI fallback for HTML5 Contact Form 7 form fields.
 		add_filter( 'wpcf7_support_html5_fallback', '__return_true' );
-
-		// Remove WooCommerce styles.
-		add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 
 	}
 
@@ -168,8 +139,6 @@ final class Functions {
 		// HTML 5 tags support.
 		add_theme_support( 'html5', [
 			'search-form',
-			'comment-form',
-			'comment-list',
 			'gscreenery',
 			'caption'
 		 ] );
@@ -245,15 +214,6 @@ final class Functions {
 		 */
 		add_editor_style( '/assets/css/editor-style.css', [ 'amcd-admin' ], '', 'screen' );
 
-		/**
-		 * Disable Jetpack open graph. We have the open graph tags in the theme.
-		 *
-		 * @since 1.0.0
-		 */
-		if ( class_exists( 'Jetpack' ) ) {
-			add_filter( 'jetpack_enable_opengraph', '__return_false', 99 );
-		}
-
 	}
 
 	/**
@@ -285,11 +245,6 @@ final class Functions {
 		// HTML 5 support.
 		wp_enqueue_script( 'amcd-html5',  get_theme_file_uri( '/assets/js/html5.min.js' ), [], '' );
 		wp_script_add_data( 'amcd-html5', 'conditional', 'lt IE 9' );
-
-		// Comments scripts.
-		if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-			wp_enqueue_script( 'comment-reply' );
-		}
 
 	}
 
