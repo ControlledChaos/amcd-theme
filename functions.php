@@ -6,7 +6,7 @@
  * @subpackage AMCD_Theme
  * @author     Greg Sweet <greg@ccdzine.com>
  * @copyright  Copyright (c) 2017 - 2018, Greg Sweet
- * @link       https://github.com/ControlledChaos/amcd-theme-theme
+ * @link       https://github.com/ControlledChaos/amcd-theme
  * @license    http://www.gnu.org/licenses/gpl-3.0.html
  * @since      Controlled Chaos 1.0.0
  */
