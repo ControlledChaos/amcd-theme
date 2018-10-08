@@ -6,7 +6,6 @@
  * @subpackage AMCD_Theme
  * @since  1.0.0
  */
-
 namespace AMCD_Theme;
 
 // Restrict direct access.

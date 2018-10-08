@@ -7,7 +7,7 @@
  * @since Bloomosphere 1.0.0
  */
 
-namespace Bloomoshere;
+namespace AMCD_Theme;
 
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;
@@ -17,10 +17,9 @@ if ( class_exists( 'ACF_Pro' ) ) {
     $get_client      = get_field( 'amcd_project_client' );
     $get_description = get_field( 'amcd_project_description' );
     $get_imdb        = get_field( 'amcd_project_imdb_page' );
-    $get_poster      = get_field( 'amcd_project_poster' );
 
     if ( $get_director ) {
-        $director = sprintf( '<p class="entry-description">%1s %2s</p>', esc_html__( 'Directed by:', 'amcd-theme' ), $get_director );
+        $director = sprintf( '<p class="entry-description"><strong>%1s</strong> %2s</p>', esc_html__( 'Directed by:', 'amcd-theme' ), $get_director );
     } else {
         $director = '';
     }
@@ -35,28 +34,15 @@ if ( class_exists( 'ACF_Pro' ) ) {
         $description = __( 'No description available for this project.', 'amcd-theme' );
     }
     if ( $get_imdb ) {
-        $imdb = sprintf( '<p>%1s <a href="%2s" target="_blank">%3s</a></p>', esc_html__( 'IMDb page:' ), $get_imdb, $get_imdb );
+        $imdb = sprintf( '<p class="entry-imdb"><strong>%1s</strong> <a href="%2s" target="_blank">%3s</a></p>', esc_html__( 'IMDb page:' ), $get_imdb, $get_imdb );
     } else {
         $imdb = '';
-    }
-    if ( ! empty ( $get_poster ) ) {
-        $title   = get_the_title();
-        $image   = get_field( 'amcd_project_poster' );
-        $url     = $image['url'];
-        $size    = 'Poster Large';
-        $thumb   = $image['sizes'][ $size ];
-        $caption = $title . __( ' Poster' );
-        $srcset  = wp_get_attachment_image_srcset( $image['ID'], $size );
-        $poster  = sprintf( '<a data-fancybox data-caption="%1s" href="%2s"><img class="project-poster" src="%3s" srcset="%4s" sizes="(max-width: 2048px) 360px, 640px" /></a>', esc_attr( $caption ), esc_attr( $url ), esc_attr( $thumb ), esc_attr( $srcset ) );
-    } else {
-        $poster = '';
     }
 } else {
     $director    = '';
     $client      = '';
     $description = '';
     $imdb        = '';
-    $poster      = '';
 } ?>
 
 <article class="global-wrapper hentry" id="post-<?php the_ID(); ?>" role="article">
@@ -65,11 +51,15 @@ if ( class_exists( 'ACF_Pro' ) ) {
     </header>
     <div class="entry-content single-project" itemprop="articleBody">
         <div class="entry-info">
-            <?php echo $poster; ?>
             <?php echo $director; ?>
-            <?php echo $client; ?>
-            <?php echo $description; ?>
             <?php echo $imdb; ?>
+            <?php echo $client;
+            if ( $get_description ) { ?>
+            <div class="entry-info-description">
+                <p><strong><?php _e( 'Description:', 'amcd-theme' ); ?></strong></p>
+                <?php echo $description; ?>
+            </div>
+            <?php } ?>
         </div>
         <div class="clearfix"></div>
         <?php if ( class_exists( 'ACF_Pro' ) ) {
@@ -91,7 +81,7 @@ if ( class_exists( 'ACF_Pro' ) ) {
                     <li>
                         <figure>
                             <a data-type="image" data-fancybox="entry-gallery" data-caption="<?php echo $image['caption']; ?>" href="<?php echo $image['url']; ?>">
-                                <img src="<?php echo $image['sizes']['Video Medium']; ?>" />
+                                <img src="<?php echo $image['sizes']['medium']; ?>" />
                                 <figcaption><span><?php echo $image['caption']; ?></span></figcaption>
                             </a>
                         </figure>

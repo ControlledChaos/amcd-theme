@@ -7,7 +7,7 @@
  * @since Bloomosphere 1.0.0
  */
 
-namespace Bloomoshere;
+namespace AMCD_Theme;
 
 // Restrict direct access
 if ( ! defined( 'ABSPATH' ) ) exit;

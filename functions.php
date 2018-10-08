@@ -71,6 +71,9 @@ final class Functions {
 		// Frontend scripts.
 		add_action( 'wp_enqueue_scripts', [ $this, 'frontend_scripts' ] );
 
+		// Footer scripts.
+		add_action( 'wp_footer', [ $this, 'footer_scripts' ], 20 );
+
 		// Admin scripts.
 		add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
 
@@ -267,7 +270,7 @@ final class Functions {
 	public function frontend_styles() {
 
 		// Theme sylesheet.
-		wp_enqueue_style( 'amcd-style',      get_stylesheet_uri(), [], '', 'screen' );
+		wp_enqueue_style( 'amcd-style', get_stylesheet_uri(), [], '', 'screen' );
 
 		$google = checkdnsrr( 'google.com' );
 
@@ -314,6 +317,9 @@ final class Functions {
 		// Set up Scema attributes for the <body> element.
 		require_once get_theme_file_path( '/includes/template-tags/class-body-schema.php' );
 
+		// Post type functionality.
+		require_once get_theme_file_path( '/includes/post-types/class-post-types.php' );
+
 		// Get template tags.
 		require_once get_theme_file_path( '/includes/template-tags/template-tags.php' );
 
@@ -324,6 +330,27 @@ final class Functions {
 		if ( ! is_singular() ) {
 			require get_theme_file_path( '/template-parts/navigation/class-blog-nav.php' );
 		}
+
+	}
+
+	/**
+	 * Footer scripts.
+	 *
+	 * @since  1.0.0
+	 * @access public
+	 * @return void
+	 */
+	public function footer_scripts() {
+
+		$scripts = '<script>jQuery(document).ready( function($) {';
+
+		if ( is_singular( 'amcd_features' ) ) {
+			$scripts .= '$(".single-feature-video").fitVids();';
+		}
+
+		$scripts .= '});</script>';
+
+		echo $scripts;
 
 	}
 
