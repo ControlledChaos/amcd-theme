@@ -346,6 +346,8 @@ final class Functions {
 
 		if ( is_singular( 'amcd_features' ) ) {
 			$scripts .= '$(".single-feature-video").fitVids();';
+		} elseif ( is_singular( 'amcd_commercials' ) ) {
+			$scripts .= '$(".single-commercial-video").fitVids();';
 		}
 
 		$scripts .= '});</script>';
