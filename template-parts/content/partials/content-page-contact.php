@@ -65,10 +65,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 							$url   = $file['url'];
 							$title = __( 'Download Resume', 'amcd-theme' );
 						} ?>
-						<p>
-							<a class="resume-link-button tooltip" href="<?php echo $url; ?>" title="<?php echo $title; ?>" target="_blank"><?php _e( 'Resume', 'amcd-theme' ); ?></a>
-							<a class="instagram-link tooltip" href="http://instagram.com/anniebloomstyles" target="_blank" title="<?php _e( 'Follow on Instagram', 'amcd-theme' ); ?>"><span class="screen-reader-text"><?php _e( 'Instagram', 'amcd-theme' ); ?></span></a>
-						</p>
+						<p><a class="resume-link-button tooltip" href="<?php echo $url; ?>" title="<?php echo $title; ?>" target="_blank"><?php echo $title; ?></a></p>
 					</div>
 					<div class="clearfix"></div>
 				</div>
