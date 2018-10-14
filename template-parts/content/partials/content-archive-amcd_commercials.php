@@ -53,7 +53,7 @@ if ( have_posts() ) : ?>
     }
 
     if ( $title ) {
-        $heading = $client . ' &ndash; ' . $title;
+        $heading = $client . ' | ' . $title;
     } else {
         $heading = $client;
     } ?>

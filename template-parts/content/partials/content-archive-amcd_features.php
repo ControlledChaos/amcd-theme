@@ -41,9 +41,9 @@ if ( have_posts() ) : ?>
     } ?>
         <li class="features-entry" id="<?php echo 'feature-' . get_the_ID(); ?>">
             <figure>
-                <a data-fancybox data-caption="<?php echo esc_attr( $caption ); ?>" href="https://player.vimeo.com/video/<?php echo $vimeo; ?>?title=0&byline=0&portrait=0&color=ffffff&autoplay=1" target="_blank">
+                <?php if ( $vimeo ) : ?><a data-fancybox data-caption="<?php echo esc_attr( $caption ); ?>" href="https://player.vimeo.com/video/<?php echo $vimeo; ?>?title=0&byline=0&portrait=0&color=ffffff&autoplay=1" target="_blank"><?php endif; ?>
                     <img src="<?php echo $thumb; ?>" srcset="<?php echo esc_attr( $srcset ); ?>" sizes="(max-width: 640px) 640px, (max-width: 960px) 960px, 640px" width="<?php echo $width; ?>" height="<?php echo $height; ?>" />
-                </a>
+                <?php if ( $vimeo ) : ?></a><?php endif; ?>
                 <figcaption>
                     <?php echo sprintf( '<h3 class="archives-image-title">%1s</h3>', $title ); ?>
                     <ul>

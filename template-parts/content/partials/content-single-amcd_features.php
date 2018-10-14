@@ -63,14 +63,42 @@ if ( class_exists( 'ACF_Pro' ) ) {
         </div>
         <div class="clearfix"></div>
         <?php if ( class_exists( 'ACF_Pro' ) ) {
-        $video = get_field( 'amcd_project_vimeo_id' );
-        if ( $video ) { ?>
-        <div class="single-feature-video">
-            <?php echo sprintf( '<h3>%1s %2s</h3>', get_the_title(), esc_html__( 'Trailer', 'amcd-theme' ) ); ?>
-            <iframe src="https://player.vimeo.com/video/<?php echo $video; ?>?color=ffffff&title=0&byline=0&portrait=0" width="1280" height="720" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-        </div>
-        <div class="clearfix video-fix"></div><?php }
-        } ?>
+            $get_vimeo = get_field( 'amcd_project_vimeo_id' );
+            $image     = get_field( 'amcd_project_image' );
+            $size      = 'video-large';
+            $srcset    = wp_get_attachment_image_srcset( $image['ID'], $size );
+            $width     = $image['sizes'][ $size . '-width' ];
+            $height    = $image['sizes'][ $size . '-height' ];
+
+            if ( ! empty( $get_vimeo ) ) {
+                $vimeo_data = json_decode( file_get_contents( 'http://vimeo.com/api/oembed.json?url=' . $get_vimeo ) );
+            } else {
+                $vimeo_data = null;
+            }
+
+            if ( ! $vimeo_data ) {
+                $vimeo = null;
+            } else {
+                $vimeo = $vimeo_data->video_id;
+            }
+
+            if ( $image ) {
+                $thumb = $image['sizes'][ $size ];
+            }
+
+            if ( $get_vimeo ) { ?>
+            <div class="single-feature-video">
+                <?php echo sprintf( '<h3>%1s %2s</h3>', get_the_title(), esc_html__( 'Trailer', 'amcd-theme' ) ); ?>
+                <iframe src="https://player.vimeo.com/video/<?php echo $vimeo; ?>?color=ffffff&title=0&byline=0&portrait=0" width="1280" height="720" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+            <div class="clearfix video-fix"></div>
+            <?php } elseif ( ! $get_vimeo && $image ) {
+                echo sprintf(
+                    '<div class="single-feature-video"><img src="%1s" /></div>',
+                    $thumb
+                );
+            }
+        } // End if ACF ?>
         <?php if ( class_exists( 'ACF_Pro' ) ) {
         $gallery = get_field( 'amcd_project_gallery' );
         if ( $gallery ) { ?>
