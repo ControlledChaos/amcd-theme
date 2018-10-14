@@ -33,6 +33,9 @@ class Content {
 	 */
     public function partials() {
 
+        $contact_page = get_page_by_path( 'contact' );
+		$contact_id   = $contact_page->ID;
+
         if ( is_front_page() && is_home() ) {
             $partial = get_template_part( 'template-parts/content/partials/content', 'home' );
         } elseif ( is_front_page() ) {
@@ -51,6 +54,8 @@ class Content {
             $partial = get_template_part( 'template-parts/content/partials/content-single', 'amcd_features' );
         } elseif ( is_singular( 'amcd_commercials' ) ) {
             $partial = get_template_part( 'template-parts/content/partials/content-single', 'amcd_commercials' );
+        } elseif ( class_exists( 'ACF_Pro' ) && ( is_page_template( 'page-templates/page-contact.php' ) || is_page( $contact_page->ID ) ) ) {
+            $partial = get_template_part( 'template-parts/content/partials/content', 'page-contact' );
         } else {
             $partial = get_template_part( 'template-parts/content/partials/content', 'singular' );
         }

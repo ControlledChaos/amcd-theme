@@ -1,6 +1,9 @@
 <?php
 /**
- * Content index class.
+ * Contact page template
+ *
+ * Template Name: Contact
+ * Template Post Type: page
  *
  * @package WordPress
  * @subpackage AMCD_Theme
@@ -11,7 +14,7 @@ namespace AMCD_Theme;
 // Restrict direct access.
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-class Index {
+class Contact_Page {
 
 	/**
 	 * Constructor magic method.
@@ -31,5 +34,5 @@ class Index {
 
 }
 
-// Run the Index class.
-new Index;
+// Run the Contact_Page class.
+new Contact_Page;
