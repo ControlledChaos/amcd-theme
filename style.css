@@ -75,9 +75,71 @@ body {
 	color: #23282d;
 }
 
+.loader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	z-index: 99999;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	   -moz-box-orient: vertical;
+	   -moz-box-direction: normal;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-align: center;
+	   -moz-box-align: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: center;
+	   -moz-box-pack: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	background: #fff;
+}
+
+.no-js .loader {
+	display: none;
+}
+
+.loading {
+	margin-top: 1em;
+}
+
+@-webkit-keyframes spinner {
+	from {-webkit-transform: rotate(0deg);transform: rotate(0deg);}
+	to {-webkit-transform: rotate(359deg);transform: rotate(359deg);}
+}
+
+@keyframes spinner {
+	from {-webkit-transform: rotate(0deg);transform: rotate(0deg);}
+	to {-webkit-transform: rotate(359deg);transform: rotate(359deg);}
+}
+
+.spinner {
+	border: 3px solid rgba(100,100,100, .3);
+	border-top: 3px solid #777;
+	border-radius: 100%;
+	height: 64px;
+	width: 64px;
+	-webkit-animation: spinner .8s infinite linear;
+	        animation: spinner .8s infinite linear;
+	background: transparent;
+	z-index: 99999;
+}
+
 .global-wrapper {
 	max-width: 1280px;
 	margin: 0 auto;
+}
+
+main {
+	min-height: 60vh;
 }
 
 main article {
@@ -134,7 +196,8 @@ ol {
 	text-decoration: none;
 }
 
-.main-nav-toggle {
+.menu-open,
+.menu-close {
 	display: none;
 }
 
@@ -432,14 +495,60 @@ figure.alignnone {
 	/* Styles */
 }
 
-@media screen and (max-width: 768px) {
+/**
+ * iPad Pro ( 10.5 inch )
+ */
+@media screen and (max-width: 834px) {
 
-	.main-navigation ul {
+	.intro-image {
 		display: none;
 	}
 
-	.main-nav-toggle {
+	.main-nav-menu {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh;
+		z-index: 9999;
+		background: #fff;
+		-webkit-box-align: center;
+		   -moz-box-align: center;
+		    -ms-flex-align: center;
+		        align-items: center;
+		-webkit-box-pack: center;
+		   -moz-box-pack: center;
+		    -ms-flex-pack: center;
+		        justify-content: center;
+	}
+
+	.main-nav-menu.open {
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: flex;
+	}
+
+	.menu-open {
 		display: inline-block;
+	}
+
+	.menu-close {
+		display: inline-block;
+		position: absolute;
+		top: 2em;
+		right: 2em;
+	}
+
+	.logged-in.admin-bar .menu-close {
+		top: 4em;
+	}
+
+	.main-navigation li {
+		display: block;
+		margin: 1em 0;
+		font-size: 2em;
 	}
 
 	.video-grid,

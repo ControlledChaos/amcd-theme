@@ -62,6 +62,9 @@ final class Functions {
 		// Swap html 'no-js' class with 'js'.
 		add_action( 'wp_head', [ $this, 'js_detect' ], 0 );
 
+		// Page loader.
+        add_action( 'amcd_loader', [ $this, 'loader' ], 1 );
+
 		// Controlled Chaos theme setup.
 		add_action( 'after_setup_theme', [ $this, 'setup' ] );
 
@@ -93,6 +96,9 @@ final class Functions {
 		// jQuery UI fallback for HTML5 Contact Form 7 form fields.
 		add_filter( 'wpcf7_support_html5_fallback', '__return_true' );
 
+		// Admin header.
+		add_action( 'in_admin_header', [ $this, 'admin_header' ] );
+
 	}
 
 	/**
@@ -107,6 +113,42 @@ final class Functions {
 		echo "<script>(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);</script>\n";
 
 	}
+
+	/**
+	 * Page loader.
+     *
+     * @since  1.0.0
+	 */
+    public function loader() {
+
+        if ( is_front_page() && is_home() ) {
+            $loading = get_bloginfo( 'name' );
+        } elseif ( is_front_page() ) {
+            $loading = get_bloginfo( 'name' );
+        } elseif ( is_home() ) {
+            $loading = get_bloginfo( 'name' );
+        } elseif ( is_post_type_archive( 'amcd_features' ) ) {
+            $loading = __( 'Loading Features', 'amcd-theme' );
+        } elseif ( is_post_type_archive( 'amcd_commercials' ) ) {
+            $loading = __( 'Loading Commercials', 'amcd-theme' );
+        } elseif ( is_archive() ) {
+            $loading = __( 'Loading Archives', 'amcd-theme' );
+        } elseif ( is_search() ) {
+            $loading = __( 'Loading Search Results', 'amcd-theme' );
+        } elseif ( is_singular( 'amcd_features' ) ) {
+            $loading = __( 'Loading Feature', 'amcd-theme' );
+        } elseif ( is_singular( 'amcd_commercials' ) ) {
+            $loading = __( 'Loading Commercial', 'amcd-theme' );
+        } else {
+            $loading = __( 'Loading', 'amcd-theme' );
+        }
+
+        echo sprintf(
+            '<div class="loader"><div class="spinner"></div><div class="loading">%1s</div></div>',
+            $loading
+		);
+
+    }
 
 	/**
 	 * Theme setup.
@@ -132,9 +174,6 @@ final class Functions {
 
 		// Browser title tag support.
 		add_theme_support( 'title-tag' );
-
-		// Background color & image support.
-		add_theme_support( 'custom-background' );
 
 		// RSS feed links support.
 		add_theme_support( 'automatic-feed-links' );
@@ -205,9 +244,8 @@ final class Functions {
 		 * @since  1.0.0
 		 */
 		register_nav_menus( [
-			'main'   => __( 'Main Menu', 'amcd-theme' ),
-			'footer' => __( 'Footer Menu', 'amcd-theme' ),
-			'social' => __( 'Social Menu', 'amcd-theme' )
+			'main'  => __( 'Main Menu', 'amcd-theme' ),
+			'admin' => __( 'Admin Header Menu', 'amcd-theme' )
 		] );
 
 		/**
@@ -342,7 +380,26 @@ final class Functions {
 	 */
 	public function footer_scripts() {
 
-		$scripts = '<script>jQuery(document).ready( function($) {';
+		$scripts = '<script>';
+
+		$scripts .= 'jQuery(window).load(function(){jQuery(".loader").fadeOut(350);});';
+
+		$scripts .='jQuery(document).ready(function () {
+    jQuery(".menu-open").click(function () {
+        jQuery(".main-nav-menu").addClass("open");
+        jQuery(".menu-open, .menu-close").attr("aria-expanded", function (i, attr) {
+            return attr == "true" ? "false" : "true"
+        });
+    });
+    jQuery(".menu-close").click(function () {
+        jQuery(".main-nav-menu").removeClass("open");
+        jQuery(".menu-open, .menu-close").attr("aria-expanded", function (i, attr) {
+            return attr == "true" ? "false" : "true"
+        });
+    });
+});';
+
+		$scripts .= 'jQuery(document).ready( function($) {';
 
 		if ( is_singular( 'amcd_features' ) ) {
 			$scripts .= '$(".single-feature-video").fitVids();';
@@ -350,9 +407,24 @@ final class Functions {
 			$scripts .= '$(".single-commercial-video").fitVids();';
 		}
 
-		$scripts .= '});</script>';
+		$scripts .= '});';
+
+		$scripts .= '</script>';
 
 		echo $scripts;
+
+	}
+
+	/**
+	 * Admin header and menu toggle.
+	 *
+	 * @since 1.0.0
+	 */
+	public function admin_header() {
+
+		if ( is_admin() ) {
+			get_template_part( 'template-parts/admin/admin-header' );
+		}
 
 	}
 

@@ -38,7 +38,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 							$phone = get_sub_field( 'amcd_agent_phone' );
 							$email = get_sub_field( 'amcd_agent_email' ); ?>
 							<li>
-								<span class="agent agent-department"><?php echo $dept; ?></span><span class="agent agent-name"><?php echo $name; ?></span>
+								<span class="agent agent-department"><?php echo $dept; ?></span> | <span class="agent agent-name"><?php echo $name; ?></span>
 								<br /><a class="" href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
 								<br /><a class="" href="tel:<?php echo $phone; ?>"><?php echo $phone; ?></a>
 							</li>
@@ -65,7 +65,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 							$url   = $file['url'];
 							$title = __( 'Download Resume', 'amcd-theme' );
 						} ?>
-						<p><a class="resume-link-button tooltip" href="<?php echo $url; ?>" title="<?php echo $title; ?>" target="_blank"><?php echo $title; ?></a></p>
+						<p><a class="resume-link-button tooltip" href="<?php echo $url; ?>" target="_blank"><?php echo $title; ?></a></p>
 					</div>
 					<div class="clearfix"></div>
 				</div>

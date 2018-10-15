@@ -17,19 +17,12 @@ $args   = [
         'menu'            => 'main',
         'menu_class'      => 'main-nav-menu-list',
         'menu_id'         => 'main-nav-menu-list',
-        'container'       => 'div', // Can use false to remove container.
-        'container_class' => 'main-nav-menu',
-        'container_id'    => 'main-nav-menu',
-        'fallback_cb'     => '',
+        'container'       => false,
         'before'          => $before,
         'after'           => $after,
-        'link_before'     => '',
-        'link_after'      => '',
         'echo'            => true,
         'depth'           => 0,
-        'walker'          => '',
         'theme_location'  => 'main',
-        // 'items_wrap'      => '', // Uses printf() format with numbered placeholders.
         'item_spacing'    => 'preserve' // Accepts 'preserve' or 'discard'.
 ];
 
@@ -37,8 +30,11 @@ do_action( 'amcd_before_main_nav' ); ?>
 <nav class="main-navigation" role="directory" itemscope itemtype="http://schema.org/SiteNavigationElement">
 	<div class="global-wrapper main-navigation-wrapper">
 	<?php $menu_toggle = apply_filters( 'amcd_nav_toggle_text', esc_html__( 'Menu', 'amcd-theme' ) ); ?>
-		<button id="main-nav-toggle" class="main-nav-toggle" aria-controls="main-nav-menu" aria-expanded="false"><?php echo $menu_toggle; ?></button>
-		<?php wp_nav_menu( $args ); ?>
+        <button id="menu-open" class="menu-open" aria-controls="main-nav-menu" aria-expanded="false"><?php echo $menu_toggle; ?></button>
+        <div class="main-nav-menu">
+            <button id="menu-close" class="menu-close"><?php echo esc_html__( 'Close', 'amcd-theme' ); ?></button>
+            <?php wp_nav_menu( $args ); ?>
+        </div>
 	</div>
 </nav>
 <?php do_action( 'amcd_after_main_nav' ); ?>
