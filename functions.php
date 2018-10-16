@@ -77,9 +77,6 @@ final class Functions {
 		// Footer scripts.
 		add_action( 'wp_footer', [ $this, 'footer_scripts' ], 20 );
 
-		// Admin scripts.
-		add_action( 'admin_enqueue_scripts', [ $this, 'admin_scripts' ] );
-
 		// Frontend styles.
 		add_action( 'wp_enqueue_scripts', [ $this, 'frontend_styles' ] );
 
@@ -89,9 +86,6 @@ final class Functions {
 		 * Call late to override plugin styles.
 		 */
 		add_action( 'admin_enqueue_scripts', [ $this, 'admin_styles' ], 99 );
-
-		// Login styles.
-		add_action( 'login_enqueue_scripts', [ $this, 'login_styles' ] );
 
 		// jQuery UI fallback for HTML5 Contact Form 7 form fields.
 		add_filter( 'wpcf7_support_html5_fallback', '__return_true' );
@@ -248,13 +242,6 @@ final class Functions {
 			'admin' => __( 'Admin Header Menu', 'amcd-theme' )
 		] );
 
-		/**
-		 * Add stylesheet for the content editor.
-		 *
-		 * @since 1.0.0
-		 */
-		add_editor_style( '/assets/css/editor-style.css', [ 'amcd-admin' ], '', 'screen' );
-
 	}
 
 	/**
@@ -315,28 +302,6 @@ final class Functions {
 		if ( $google ) {
 			wp_enqueue_style( 'amcd-fonts', 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,700,700i', [], '', 'screen' );
 		}
-
-	}
-
-	/**
-	 * Admin styles.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return void
-	 */
-	public function admin_styles() {}
-
-	/**
-	 * Login styles.
-	 *
-	 * @since  1.0.0
-	 * @access public
-	 * @return void
-	 */
-	public function login_styles() {
-
-		wp_enqueue_style( 'amcd-theme-login', get_theme_file_uri( '/assets/css/login.css' ), [], '', 'screen' );
 
 	}
 
