@@ -80,13 +80,6 @@ final class Functions {
 		// Frontend styles.
 		add_action( 'wp_enqueue_scripts', [ $this, 'frontend_styles' ] );
 
-		/**
-		 * Admin styles.
-		 *
-		 * Call late to override plugin styles.
-		 */
-		add_action( 'admin_enqueue_scripts', [ $this, 'admin_styles' ], 99 );
-
 		// jQuery UI fallback for HTML5 Contact Form 7 form fields.
 		add_filter( 'wpcf7_support_html5_fallback', '__return_true' );
 
