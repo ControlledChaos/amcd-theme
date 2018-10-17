@@ -201,9 +201,9 @@ final class Functions {
 		// 1:1 Square.
 		add_image_size( 'thumb-large', 240, 240, true );
 		add_image_size( 'thumb-x-large', 320, 320, true );
-		add_image_size( 'intro-small', 640, 640, true );
-		add_image_size( 'intro-medium', 768, 768, true );
-		add_image_size( 'intro-large', 1080, 1080, true );
+		add_image_size( 'intro-small', 480, 480, true );
+		add_image_size( 'intro-medium', 640, 640, true );
+		add_image_size( 'intro-large', 768, 768, true );
 
 		// 16:9 HD Video.
 		add_image_size( 'video-small', 640, 360, true );
