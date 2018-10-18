@@ -62,7 +62,10 @@ if ( have_posts() ) : ?>
                 <img src="<?php echo $thumb; ?>" srcset="<?php echo esc_attr( $srcset ); ?>" sizes="(max-width: 640px) 640px, (max-width: 960px) 960px, 640px" width="<?php echo $width; ?>" height="<?php echo $height; ?>" />
                 <figcaption>
                     <?php
-                    echo sprintf( '<h3 class="archives-image-title">%1s</h3>', $heading ); ?>
+                    echo sprintf( '<h3 class="archives-image-title">%1s</h3>', $heading );
+                    if ( $director ) {
+                        echo sprintf( '<p class="archives-image-director commercial-director">Directed by %1s</p>', $director );
+                    } ?>
                 </figcaption>
             </a></figure>
         </li>
