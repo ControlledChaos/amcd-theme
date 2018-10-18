@@ -57,7 +57,7 @@ if ( have_posts() ) : ?>
     } else {
         $heading = $client;
     } ?>
-        <li id="<?php echo 'commercial-' . get_the_ID(); ?>">
+        <li id="<?php echo 'commercial-' . get_the_ID(); ?>" class="commercial-video<?php if ( $director ) { echo ' commercial-has-director'; } ?>">
             <figure><a data-fancybox data-caption="<?php echo esc_attr( $caption ); ?>" href="https://player.vimeo.com/video/<?php echo $vimeo; ?>?title=0&byline=0&portrait=0&color=ffffff&autoplay=1" target="_blank">
                 <img src="<?php echo $thumb; ?>" srcset="<?php echo esc_attr( $srcset ); ?>" sizes="(max-width: 640px) 640px, (max-width: 960px) 960px, 640px" width="<?php echo $width; ?>" height="<?php echo $height; ?>" />
                 <figcaption>
