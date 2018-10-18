@@ -1,7 +1,7 @@
 <?php
 /**
  * Begin the <head> section.
- * 
+ *
  * Use the before_html hook for things such as
  * acf_form_head for Advanced Custom Fields
  * conditional frontend forms.
@@ -16,11 +16,19 @@ namespace AMCD_Theme;
 // Restrict direct access.
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+if ( is_front_page() && class_exists( 'ACF_Pro' ) && is_page_template( 'page-templates/front-page-background-slides.php' ) ) {
+	$class = 'no-js front-page-html has-bg-slider';
+} elseif ( is_front_page() ) {
+	$class = 'no-js front-page-html';
+} else {
+    $class = 'no-js';
+}
+
 // Get the site languge.
 $language = get_language_attributes();
 
 // Apply filter for adding classes or more attributes.
-$tag      = '<html ' . $language . ' class="no-js">';
+$tag      = '<html ' . $language . ' class="' . $class . '">';
 $html_tag = apply_filters( 'amcd_html_tag', $tag );
 
 ?>

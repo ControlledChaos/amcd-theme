@@ -44,7 +44,10 @@ class Template_Filters {
             'video-large'   => esc_html__( 'Video Large', 'amcd-theme' ),
             'intro-small'   => esc_html__( 'Intro Small', 'amcd-theme' ),
             'intro-medium'  => esc_html__( 'Intro Medium', 'amcd-theme' ),
-            'intro-large'   => esc_html__( 'Intro Large', 'amcd-theme' )
+            'intro-large'   => esc_html__( 'Intro Large', 'amcd-theme' ),
+            'slide-small'   => esc_html__( 'Slide Small', 'amcd-theme' ),
+            'slide-medium'  => esc_html__( 'Slide Medium', 'amcd-theme' ),
+            'slide-large'   => esc_html__( 'Slide Large', 'amcd-theme' )
 		];
 
 		$insert_sizes = apply_filters( 'amcd_insert_image_sizes', $sizes );

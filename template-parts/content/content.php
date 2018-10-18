@@ -38,6 +38,8 @@ class Content {
 
         if ( is_front_page() && is_home() ) {
             $partial = get_template_part( 'template-parts/content/partials/content', 'home' );
+        } elseif ( is_front_page() && class_exists( 'ACF_Pro' ) && is_page_template( 'page-templates/front-page-background-slides.php' ) ) {
+            $partial = get_template_part( 'template-parts/content/partials/content', 'background-slides' );
         } elseif ( is_front_page() ) {
             $partial = get_template_part( 'template-parts/content/partials/content', 'front-page' );
         } elseif ( is_home() ) {
