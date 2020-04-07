@@ -47,7 +47,9 @@ class Content {
         } elseif ( is_post_type_archive( 'amcd_features' ) ) {
             $partial = get_template_part( 'template-parts/content/partials/content-archive', 'amcd_features' );
         } elseif ( is_post_type_archive( 'amcd_commercials' ) ) {
-            $partial = get_template_part( 'template-parts/content/partials/content-archive', 'amcd_commercials' );
+			$partial = get_template_part( 'template-parts/content/partials/content-archive', 'amcd_commercials' );
+		} elseif ( is_post_type_archive( 'amcd_videos' ) ) {
+            $partial = get_template_part( 'template-parts/content/partials/content-archive', 'amcd_videos' );
         } elseif ( is_archive() ) {
             $partial = get_template_part( 'template-parts/content/partials/content', 'archive' );
         } elseif ( is_search() ) {
@@ -55,7 +57,9 @@ class Content {
         } elseif ( is_singular( 'amcd_features' ) ) {
             $partial = get_template_part( 'template-parts/content/partials/content-single', 'amcd_features' );
         } elseif ( is_singular( 'amcd_commercials' ) ) {
-            $partial = get_template_part( 'template-parts/content/partials/content-single', 'amcd_commercials' );
+			$partial = get_template_part( 'template-parts/content/partials/content-single', 'amcd_commercials' );
+		} elseif ( is_singular( 'amcd_videos' ) ) {
+            $partial = get_template_part( 'template-parts/content/partials/content-single', 'amcd_videos' );
         } elseif ( class_exists( 'ACF_Pro' ) && ( is_page_template( 'page-templates/page-contact.php' ) || is_page( $contact_page->ID ) ) ) {
             $partial = get_template_part( 'template-parts/content/partials/content', 'page-contact' );
         } else {
